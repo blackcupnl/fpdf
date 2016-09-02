@@ -561,6 +561,15 @@ function SetFontSize($size)
 		$this->_out(sprintf('BT /F%d %.2F Tf ET',$this->CurrentFont['i'],$this->FontSizePt));
 }
 
+function SetDash($black=null, $white=null)
+{
+    if($black!==null)
+        $s=sprintf('[%.3F %.3F] 0 d',$black*$this->k,$white*$this->k);
+    else
+        $s='[] 0 d';
+    $this->_out($s);
+}
+
 function AddLink()
 {
 	// Create a new internal link
